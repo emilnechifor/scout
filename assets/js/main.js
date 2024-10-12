@@ -96,7 +96,7 @@
         $main_articles.hide().removeClass('active');
 
         // Unstick header if necessary
-        if (location.hash == '' || location.hash == '#') {
+        if (location.hash == '' || location.hash == '#intro') {
             toggleHeaderStickiness(false);
         }
     };
@@ -140,4 +140,20 @@
             $window.scrollTop(oldScrollPos);
         });
     }
+
+	$window.on('scroll', function() {
+		if ($window.scrollTop() > 0) {
+			toggleHeaderStickiness(true);
+		} else {
+			toggleHeaderStickiness(false);
+		}
+	});
+
+	$window.scrollTop = function(value) {
+		if (value === 0) {
+			$('html, body').animate({ scrollTop: 0 }, 300);
+		} else {
+			return this.scrollTop(value);
+		}
+	};
 })(jQuery);

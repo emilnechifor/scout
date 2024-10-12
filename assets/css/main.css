@@ -1261,13 +1261,17 @@ input, select, textarea {
 		max-width: 100%;
 		text-align: center;
 	}
+
+	#header {
+		transition: top 0.3s ease-in-out;
+	}
+	
 	#header.is-sticky {
 		position: fixed;
 		top: 0;
-		width: 100%;
 		z-index: 1000;
 		background: rgba(255, 255, 255, 0.9);
-		box-shadow: 0 0 10px rgba(0,0,0,0.1);
+		box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 	}
 
 		#header > * {
