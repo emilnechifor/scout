@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let touchStartX = 0;
     let touchEndX = 0;
 
-    document.querySelector('.slider').addEventListener('touchstart', function(e) {
+    document.querySelector('.slider-container').addEventListener('touchstart', function(e) {
         touchStartX = e.changedTouches[0].screenX;
     });
 
-    document.querySelector('.slider').addEventListener('touchend', function(e) {
+    document.querySelector('.slider-container').addEventListener('touchend', function(e) {
         touchEndX = e.changedTouches[0].screenX;
         handleGesture();
     });
