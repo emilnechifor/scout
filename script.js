@@ -29,10 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let slideTimer = setInterval(nextSlide, slideInterval);
 
     // Mouse and Touch events
-    document.querySelector('.slider').addEventListener('click', function() {
-        clearInterval(slideTimer);
-        nextSlide();
-        slideTimer = setInterval(nextSlide, slideInterval);
+    document.querySelector('.slider-container').addEventListener('click', function(e) {
+        // Prevent clicks on indicators from triggering the slider change
+        if (!e.target.classList.contains('indicator')) {
+            clearInterval(slideTimer);
+            nextSlide();
+            slideTimer = setInterval(nextSlide, slideInterval);
+        }
     });
 
     // Touch events for mobile
