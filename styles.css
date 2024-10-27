@@ -11,9 +11,9 @@ body, html {
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 1000px; /* Adjust as needed */
-    height: calc(100vh - 6rem); /* Subtract padding from height */
-    padding: 3rem 2rem;
+    max-width: calc(100vh - 4rem); /* Adjust as needed */
+    height: calc(100vh - 2rem); /* This value assumes 1rem margin on top and bottom */
+    margin: 1rem 0; /* Margin to give space from the top and bottom */
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -70,8 +70,9 @@ body, html {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .slider-container {
-        height: calc(100vh - 4rem); /* Adjust padding for mobile */
-        padding: 2rem 1rem;
+        max-width: calc(100vh - 2rem); /* Adjust max-width for mobile */
+        height: calc(100vh - 1rem); /* Adjust height for smaller margin on mobile */
+        margin: 0.5rem 0;
     }
 
     .indicators {
@@ -86,8 +87,9 @@ body, html {
 
 @media (max-width: 480px) {
     .slider-container {
-        height: calc(100vh - 2rem); /* Further adjust for small screens */
-        padding: 1rem;
+        max-width: calc(100vh - 1rem); /* Further adjust for small screens */
+        height: calc(100vh - 0.5rem); /* Even smaller margin for tiny screens */
+        margin: 0.25rem 0;
     }
 
     .indicators {
