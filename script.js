@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const indicators = document.querySelectorAll('.indicator');
     let currentIndex = 0;
     const slideInterval = 5000; // Change image every 5 seconds
+    const navLinks = document.querySelectorAll(".main-nav a");
+    const sections = document.querySelectorAll(".content-section");
 
     function showSlide(index) {
         slides.forEach((slide, idx) => {
@@ -68,4 +70,48 @@ document.addEventListener('DOMContentLoaded', function() {
             slideTimer = setInterval(nextSlide, slideInterval);
         });
     });
+    // Initially show only the 'about' section
+    showSection('about');
+
+    // Listen for click events on navigation links
+    navLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            // Prevent the default link behavior (scrolling to the section)
+            event.preventDefault();
+
+            // Extract the target section id from the href attribute
+            const targetId = this.getAttribute('href').substr(1); // remove the '#'
+            // Show the corresponding section
+            showSection(targetId);
+        });
+    });
+
+    function showSection(sectionId) {
+        // Hide all sections
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        const sectionToShow = document.querySelector(`.content-section.${sectionId}`);
+        if (sectionToShow) {
+            sectionToShow.style.display = 'block';
+        }
+    }
 });
+
+window.onscroll = function() {myStickyFunction()};
+
+var navbar = document.querySelector(".main-nav");
+var sticky = navbar.offsetTop;
+
+let stickyOffset = navbar.offsetTop;
+function myStickyFunction() {
+    if (window.pageYOffset >= stickyOffset) {
+        navbar.classList.add("sticky");
+        // Optionally, force layout recalculation to avoid jumps
+        void navbar.offsetWidth;
+    } else {
+        navbar.classList.remove("sticky");
+    }
+}
