@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Sample events data
     const events = [
-        { day: 5, month: 1, title: "New Year's Party", link: "events/scout.html" },
-        { day: 14, month: 2, title: "Valentine's Day", link: "events/valentines.html" },
+        { day: 5, month: 11, title: "Sortie Scout", link: "events/scout.html" },
+        { day: 14, month: 11, title: "Test", link: "events/louveteaux.html" },
         // Add more events here
     ];
 
