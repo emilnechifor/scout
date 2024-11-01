@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const days = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 
     let date = new Date();
     let currentMonth = date.getMonth();
@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Generate calendar dates
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const firstDay = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7;
     const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    for (let i = 0; i < 42; i++) { // A month max can have 6 weeks
+    for (let i = 0; i < 42; i++) {
         const div = document.createElement('div');
         if (i >= firstDay && i < lastDate + firstDay) {
             let day = i - firstDay + 1;
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let event = events.find(e => e.day === day && e.month === currentMonth + 1);
             if(event) {
                 div.innerHTML = `<a href="${event.link}">${day} - ${event.title}</a>`;
+                div.classList.add('event-day'); // Add a class for styling
             }
         }
         document.getElementById('dates').appendChild(div);

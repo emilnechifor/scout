@@ -162,6 +162,13 @@ body, html {
 #dates div:hover {
     background-color: #e6e6e6;
 }
+
+.event-day {
+    background-color: #ffe6e6; /* Light red background */
+    border: 2px solid #ff9999; /* Red border for emphasis */
+    border-radius: 5px;
+}
+
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
     body {
