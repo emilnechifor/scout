@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     const yearCalendar = document.getElementById('year-calendar');
 
-    yeareventmonths.forEach((yeareventmonth, index) => {
+    months.forEach((yeareventmonth, index) => {
         const yeareventmonthDiv = document.createElement('div');
         yeareventmonthDiv.className = 'month';
 
