@@ -1,12 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample events data
+    // Events List
+    const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     const events = [
-        { day: 5, month: 11, endDay: 6, title: "Sortie Scout", link: "events/scout.html" },
-        { day: 14, month: 11, title: "Test", link: "events/louveteaux.html" },
+        { day: 5, month: 11, endDay: 6, title: "Sortie Scout", link: "events2024/scout.html" },
+        { day: 14, month: 11, title: "Test", link: "events2024/louveteaux.html" },
         // Add more events here
     ];
-
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const yearevents = [
+        { yeareventmonth: 11, monthstartDay: 3, montheventtitle: "Sortie Scout", link: "events2024/scout-03_nov.html" },
+        { yeareventmonth: 11, monthstartDay: 9, monthendDay: 10, montheventtitle: "Saint-Valentin", link: "events/valentines.html" },
+        // Add more events here
+    ];
     const days = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 
     let date = new Date();
@@ -49,4 +53,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         document.getElementById('dates').appendChild(div);
     }
+    const yearCalendar = document.getElementById('year-calendar');
+
+    yeareventmonths.forEach((yeareventmonth, index) => {
+        const yeareventmonthDiv = document.createElement('div');
+        yeareventmonthDiv.className = 'month';
+
+        const yeareventmonthTitle = document.createElement('h2');
+        yeareventmonthTitle.textContent = yeareventmonth;
+        yeareventmonthDiv.appendChild(yeareventmonthTitle);
+
+        yearevents.filter(e => e.yeareventmonth === index + 1).forEach(yearevent => {
+            const yeareventDiv = document.createElement('div');
+            yeareventDiv.className = 'event';
+            yeareventDiv.innerHTML = `<a href="${yearevent.link}">Du ${yearevent.monthstartDay} au ${yearevent.monthendDay ? yearevent.monthendDay : yearevent.monthstartDay} - ${yearevent.montheventtitle}</a>`;
+            yeareventmonthDiv.appendChild(yeareventDiv);
+        });
+
+        yearCalendar.appendChild(yeareventmonthDiv);
+    });
 });
