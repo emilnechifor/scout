@@ -169,6 +169,19 @@ body, html {
     border-radius: 5px;
 }
 
+.multi-day-event {
+    background-color: #ffcccc; /* Different shade for multi-day events */
+    border: 2px solid #ff6666; /* Different border color */
+}
+
+.multi-day-event a {
+    text-decoration: none; /* Remove underline from links for multi-day events */
+}
+
+.multi-day-event a::before {
+    content: "↳ "; /* Arrow to indicate continuation */
+}
+
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
     body {

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Sample events data
     const events = [
-        { day: 5, month: 11, title: "Sortie Scout", link: "events/scout.html" },
+        { day: 5, month: 11, endDay: 6, title: "Sortie Scout", link: "events/scout.html" },
         { day: 14, month: 11, title: "Test", link: "events/louveteaux.html" },
         // Add more events here
     ];
@@ -32,10 +32,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (i >= firstDay && i < lastDate + firstDay) {
             let day = i - firstDay + 1;
             div.innerText = day;
-            let event = events.find(e => e.day === day && e.month === currentMonth + 1);
+
+            // Check for events that start on this day or continue from previous days
+            let event = events.find(e => (e.day === day && e.month === currentMonth + 1) ||
+                                          (e.endDay >= day && e.day <= day && e.month === currentMonth + 1));
+
             if(event) {
-                div.innerHTML = `<a href="${event.link}">${day} - ${event.title}</a>`;
-                div.classList.add('event-day'); // Add a class for styling
+                if (event.day === day) { // Event starts on this day
+                    div.innerHTML = `<a href="${event.link}">${day} - ${event.title}</a>`;
+                } else { // Event continues from a previous day
+                    div.innerHTML = `<a href="${event.link}" class="multi-day">...</a>`; // Using '...' or any symbol to indicate continuation
+                    div.classList.add('event-day', 'multi-day-event');
+                }
+                div.classList.add('event-day');
             }
         }
         document.getElementById('dates').appendChild(div);
