@@ -66,8 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
         yearevents.filter(e => e.yeareventmonth === index + 1).forEach(yearevent => {
             const yeareventDiv = document.createElement('div');
             yeareventDiv.className = 'event';
-            yeareventDiv.innerHTML = `<a href="${yearevent.link}">Du ${yearevent.monthstartDay} au ${yearevent.monthendDay ? yearevent.monthendDay : yearevent.monthstartDay} - ${yearevent.montheventtitle}</a>`;
-            yeareventmonthDiv.appendChild(yeareventDiv);
+            if (yearevent.monthstartDay == (yearevent.monthendDay ? yearevent.monthendDay : yearevent.monthstartDay)) {
+                yeareventDiv.innerHTML = `<a href="${yearevent.link}">Le ${yearevent.monthstartDay} - ${yearevent.montheventtitle}</a>`;
+            } else {
+                yeareventDiv.innerHTML = `<a href="${yearevent.link}">Du ${yearevent.monthstartDay} au ${yearevent.monthendDay ? yearevent.monthendDay : yearevent.monthstartDay} - ${yearevent.montheventtitle}</a>`;
+            }
+                yeareventmonthDiv.appendChild(yeareventDiv);
         });
 
         yearCalendar.appendChild(yeareventmonthDiv);
