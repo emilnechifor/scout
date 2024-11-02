@@ -25,31 +25,11 @@ header {
 .motif-container {
     /* This container will hold the motif */
     overflow: hidden; /* Hides any overflow if the image scales up too much */
-    background-color: #fffaf0;
+    /* background-color: #fffaf0; */
     position: relative;
     width: 100%; /* Full width of parent container */
     z-index: 0; /* Ensure the motif is behind other elements */
 }
-
-.motif {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%; /* Match the height of the slider-container */
-    background-image: url('images/motif.png'); /* Replace with actual path */
-    background-repeat: repeat-x;
-    background-position: center;
-    background-size: cover; /* Scales to cover the width, adjust if needed */
-}
-/* If you need any adjustments for responsiveness, they would go here */
-@media screen and (max-width: 767px) {
-    .motif {
-        background-size: auto 100%; /* Ensure the image stretches to fit the height on smaller screens */
-    }
-}
-
-
 
 .slider-container {
     position: relative;
