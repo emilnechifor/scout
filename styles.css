@@ -70,7 +70,7 @@ header {
 /* pattern container css */
 :root {
     --dot-size: 3px;  /* Size of each dot */
-    --background-color: #ffffff; /* Background color */
+    /* --background-color: #ffffff;  Background color */
 }
 .pattern-container {
     width: 100vh;
