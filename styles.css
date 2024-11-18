@@ -22,15 +22,8 @@ header {
     height: auto; /* Maintain aspect ratio */
     display: block; /* Remove any space below the image */
 }
-.motif-container {
-    /* This container will hold the motif */
-    overflow: hidden; /* Hides any overflow if the image scales up too much */
-    /* background-color: #fffaf0; */
-    position: relative;
-    width: 100%; /* Full width of parent container */
-    z-index: 0; /* Ensure the motif is behind other elements */
-}
 
+/* slider container css */
 .slider-container {
     position: relative;
     width: calc(100%- 20px);
@@ -61,6 +54,36 @@ header {
 }
 .slider-container::after {
     bottom: 0;
+}
+.motif-container {
+    /* This container will hold the motif */
+    overflow: hidden; /* Hides any overflow if the image scales up too much */
+   /* background-color: #fffaf0; */
+    position: absolute;
+    width: 100%; /* Full width of parent container */
+    z-index: 0; /* Ensure the motif is behind other elements */
+    overflow: hidden;
+    z-index: 50;
+    top: 0;
+    left: 0;
+}
+/* pattern container css */
+:root {
+    --dot-size: 3px;  /* Size of each dot */
+    --background-color: #ffffff; /* Background color */
+}
+.pattern-container {
+    width: 100vh;
+    background-color: var(--background-color);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: repeat(14, var(--dot-size)); /* 14 rows each dot-size high */
+}
+.pattern-row {
+    height: var(--dot-size);
+    width: 100vh;
+    background-repeat: repeat-x;
+    background-size: calc(20 * var(--dot-size)) var(--dot-size); /* 20 dots wide */
 }
 .slider {
     width: 100%;

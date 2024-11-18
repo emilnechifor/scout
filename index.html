@@ -5,26 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scout - Découverte</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        :root {
-            --dot-size: 3px;  /* Size of each dot */
-            --background-color: #ffffff; /* Background color */
-        }
-
-        .pattern-container {
-            width: 100vw;
-            background-color: var(--background-color);
-            overflow: hidden;
-            display: grid;
-            grid-template-rows: repeat(14, var(--dot-size)); /* 14 rows each dot-size high */
-        }
-        .pattern-row {
-            height: var(--dot-size);
-            width: 100vw;
-            background-repeat: repeat-x;
-            background-size: calc(20 * var(--dot-size)) var(--dot-size); /* 20 dots wide */
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -32,96 +12,37 @@
             <img src="images/logo.jpg" alt="Logo" class="logo">
         </div>
     </header>
-    <div class="motif-container">
-        <div class="pattern-container"></div>
-        <script>
-            const imageData = [
-                [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-                [0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0],
-                [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-                [1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0],
-                [0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1],
-                [0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0],
-                [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-                [0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0],
-                [0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0],
-                [0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0],
-                [0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-                [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
-                [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
-                [0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0] 
-            ];
-            function createPatternRows() {
-                const container = document.querySelector('.pattern-container');
-                imageData.forEach((row, index) => {
-                    const div = document.createElement('div');
-                    div.className = 'pattern-row';
-                    div.dataset.row = (index + 1).toString(); // Set data-row attribute
-                    container.appendChild(div);
-                });
 
-                // Update grid-template-rows to match the number of rows
-                container.style.gridTemplateRows = `repeat(${imageData.length}, var(--dot-size))`;
-            }
-            function setDynamicBackgrounds() {
-                const dotSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-size'));
-                const rows = document.querySelectorAll('.pattern-row');
+    <!-- <div class="motif"></div> -->
+    <div class="slider-container">
+        <div class="vertical-line"></div>
+        <div class="motif-container">
 
-                rows.forEach((row, rowIndex) => {
-                    let svgContent = `
-                        <svg width="${20 * dotSize}" height="${dotSize}" viewBox="0 0 ${20 * dotSize} ${dotSize}" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="${20 * dotSize}" height="${dotSize}" fill="${getComputedStyle(document.documentElement).getPropertyValue('--background-color')}" />
-                    `;
+            <div class="pattern-container"></div>
+            <script src="js/patern.js"></script>
+        </div>
 
-                    imageData[rowIndex].forEach((dot, dotIndex) => {
-                        if (dot !== 0) {
-                            const color = dot === 1 ? 'black' : 'red';
-                            svgContent += `<rect x="${dotIndex * dotSize}" width="${dotSize}" height="${dotSize}" fill="${color}"/>`;
-                        }
-                    });
+        <div class="slider">
+            <div class="slide active" style="background-image: url('https://www.shutterstock.com/image-vector/kids-scouts-summer-camp-vector-600w-2409209715.jpg');"></div>
+            <div class="slide" style="background-image: url('https://www.shutterstock.com/image-vector/kid-scouts-hiking-child-scouting-600w-2470512523.jpg');"></div>
+            <div class="slide" style="background-image: url('https://www.shutterstock.com/image-vector/cute-kids-scouts-children-touristic-600w-2200783255.jpg');"></div>
+            <div class="slide" style="background-image: url('https://www.shutterstock.com/image-vector/boy-scout-equipment-cartoon-boyscout-600w-2467285925.jpg');"></div>
+            <div class="slide" style="background-image: url('https://static.wixstatic.com/media/daa201_c1ede0c916a24b3fa31a366ed8fb0da5~mv2.jpg/v1/fill/w_446,h_267,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/THRete1990%20(1).jpg');"></div>
+        </div>
+        <div class="indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+        <div class="motif-container">
 
-                    svgContent += '</svg>';
-
-                    const svgDataUri = encodeURIComponent(svgContent)
-                        .replace(/'/g, "%27")
-                        .replace(/"/g, "%22");
-                    row.style.backgroundImage = `url("data:image/svg+xml;charset=utf-8,${svgDataUri}")`;
-                });
-            }
-            document.addEventListener('DOMContentLoaded', () => {
-                createPatternRows();
-                setDynamicBackgrounds();
-            });
-            // Optionally, listen for changes to --dot-size if you plan to change it dynamically
-/*             const resizeObserver = new ResizeObserver(entries => {
-                for (let entry of entries) {
-                    if (entry.target === document.documentElement) {
-                        setDynamicBackground();
-                    }
-                }
-            });
-            resizeObserver.observe(document.documentElement); */
-        </script>
-
-        <!-- <div class="motif"></div> -->
-        <div class="slider-container">
-            <div class="vertical-line"></div>
-            <div class="slider">
-                <div class="slide active" style="background-image: url('https://www.shutterstock.com/image-vector/kids-scouts-summer-camp-vector-600w-2409209715.jpg');"></div>
-                <div class="slide" style="background-image: url('https://www.shutterstock.com/image-vector/kid-scouts-hiking-child-scouting-600w-2470512523.jpg');"></div>
-                <div class="slide" style="background-image: url('https://www.shutterstock.com/image-vector/cute-kids-scouts-children-touristic-600w-2200783255.jpg');"></div>
-                <div class="slide" style="background-image: url('https://www.shutterstock.com/image-vector/boy-scout-equipment-cartoon-boyscout-600w-2467285925.jpg');"></div>
-                <div class="slide" style="background-image: url('https://static.wixstatic.com/media/daa201_c1ede0c916a24b3fa31a366ed8fb0da5~mv2.jpg/v1/fill/w_446,h_267,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/THRete1990%20(1).jpg');"></div>
-            </div>
-            <div class="indicators">
-                <span class="indicator active"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
-            </div>
+            <div class="pattern-container"></div>
+            <script src="js/patern.js"></script>
         </div>
     </div>
+
     <nav class="main-nav">
         <div class="vertical-line"></div>
         <ul>
@@ -185,7 +106,7 @@
                 <!-- Calendar dates will be filled here -->
             </div>
         </div>
-        <script src="calendar.js"></script>
+        <script src="js/calendar.js"></script>
         <p>PLANNING
         - Camping et survie en nature
         - Randonnées et exploration
@@ -332,6 +253,6 @@
 
         Pour beaucoup, le scoutisme est plus qu'une simple activité de jeunesse ; c'est une philosophie de vie qui encourage l'aventure, le dépassement de soi, et un engagement envers autrui.</p>
     </section>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Events List
     const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     const events = [
-        { day: 5, month: 11, endDay: 6, title: "Sortie Scout", link: "events2024/scout.html" },
-        { day: 14, month: 11, title: "Test", link: "events2024/louveteaux.html" },
+        { day: 5, month: 11, endDay: 6, title: "Sortie Scout", link: "events2024/scout-day.html" },
+        { day: 14, month: 11, title: "Test", link: "events2024/louveteaux-day.html" },
         // Add more events here
     ];
     const yearevents = [
