@@ -70,32 +70,47 @@ document.addEventListener('DOMContentLoaded', function() {
             slideTimer = setInterval(nextSlide, slideInterval);
         });
     });
+
     // Initially show only the 'about' section
     showSection('about');
 
     // Listen for click events on navigation links
     navLinks.forEach(link => {
         link.addEventListener("click", function(event) {
-            // Prevent the default link behavior (scrolling to the section)
             event.preventDefault();
-
-            // Extract the target section id from the href attribute
-            const targetId = this.getAttribute('href').substr(1); // remove the '#'
-            // Show the corresponding section
-            showSection(targetId);
+            const href = this.getAttribute('href');
+            if (href === "/") {
+                //showSection("home");
+            } else {
+                const targetId = href.trim().replace(/^#/, '');
+                showSection(targetId);
+            }
         });
     });
 
     function showSection(sectionId) {
+        // Trim any extra space and remove leading '#' if present
+        sectionId = sectionId.trim().replace(/^#/, '');
+
+        // If sectionId is empty, exit function or show default
+        if (!sectionId) {
+            console.error("Section ID is empty or invalid.");
+            return;  // Exit if no valid ID
+        }
+
         // Hide all sections
         sections.forEach(section => {
             section.style.display = 'none';
         });
 
-        // Show the selected section
+        // Find and show the selected section
         const sectionToShow = document.querySelector(`.content-section.${sectionId}`);
         if (sectionToShow) {
             sectionToShow.style.display = 'block';
+        } else {
+            console.error(`Section with ID '${sectionId}' not found.`);
+            // Optionally, show a default section here
+            // document.querySelector('.default-section').style.display = 'block';
         }
     }
 });
