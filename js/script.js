@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener("click", function(event) {
             
             const href = this.getAttribute('href');
-            if (href.includes('/')) {
+            if (href === "../index.html") {
                 //showSection("home");
             } else {
                 event.preventDefault();
