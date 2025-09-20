@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     event.preventDefault();
                     const targetId = href.trim().replace(/^#/, '');
                     showSection(targetId);
-                 }
-            });
+                 });
+            }
     });
     
     function showSection(sectionId) {
