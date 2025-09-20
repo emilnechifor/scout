@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach(link => {
         
             
-            const href = this.getAttribute('href');
+            const href = link.getAttribute('href');
             if (href === "../index.html") {
                 //showSection("home");
             } else {
