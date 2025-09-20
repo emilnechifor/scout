@@ -76,18 +76,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Listen for click events on navigation links
     navLinks.forEach(link => {
-        
-            
-            const href = link.getAttribute('href');
+        link.addEventListener("click", function(event) {
+            const href = this.getAttribute('href');
             if (href === "../index.html") {
                 //showSection("home");
+                event.stopPropagation();
             } else {
-                link.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    const targetId = href.trim().replace(/^#/, '');
-                    showSection(targetId);
-                 });
+                event.preventDefault();
+                const targetId = href.trim().replace(/^#/, '');
+                showSection(targetId);
             }
+        });
     });
     
     function showSection(sectionId) {
