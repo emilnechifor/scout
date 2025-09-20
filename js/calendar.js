@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add more events here
     ];
     const yearevents = [
-        { yeareventmonth: 11, monthstartDay: 3, montheventtitle: "Sortie Scout", link: "events2024/scout-03_nov.html" },
+        { yeareventmonth: 11, monthstartDay: 3, montheventtitle: "Sortie Scout", link: "events2024/scout-day.html" },
         { yeareventmonth: 11, monthstartDay: 9, monthendDay: 10, montheventtitle: "Saint-Valentin", link: "events/valentines.html" },
         // Add more events here
     ];
