@@ -1,4 +1,4 @@
-const imageData = [
+const paternimg = [
     [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
     [0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0],
     [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
@@ -16,7 +16,7 @@ const imageData = [
 ];
 function createPatternRows() {
     const container = document.querySelector('.pattern-container');
-    imageData.forEach((row, index) => {
+    paternimg.forEach((row, index) => {
         const div = document.createElement('div');
         div.className = 'pattern-row';
         div.dataset.row = (index + 1).toString(); // Set data-row attribute
@@ -24,7 +24,7 @@ function createPatternRows() {
     });
 
     // Update grid-template-rows to match the number of rows
-    container.style.gridTemplateRows = `repeat(${imageData.length}, var(--dot-size))`;
+    container.style.gridTemplateRows = `repeat(${paternimg.length}, var(--dot-size))`;
 }
 function setDynamicBackgrounds() {
     const dotSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dot-size'));
@@ -36,7 +36,7 @@ function setDynamicBackgrounds() {
                 <rect width="${20 * dotSize}" height="${dotSize}" fill="${getComputedStyle(document.documentElement).getPropertyValue('--background-color')}" />
         `;
 
-        imageData[rowIndex].forEach((dot, dotIndex) => {
+        paternimg[rowIndex].forEach((dot, dotIndex) => {
             if (dot !== 0) {
                 const color = dot === 1 ? 'red' : 'red';
                 svgContent += `<rect x="${dotIndex * dotSize}" width="${dotSize}" height="${dotSize}" fill="${color}"/>`;
