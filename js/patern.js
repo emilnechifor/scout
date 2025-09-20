@@ -38,7 +38,7 @@ function setDynamicBackgrounds() {
 
         imageData[rowIndex].forEach((dot, dotIndex) => {
             if (dot !== 0) {
-                const color = dot === 1 ? 'black' : 'red';
+                const color = dot === 1 ? 'red' : 'red';
                 svgContent += `<rect x="${dotIndex * dotSize}" width="${dotSize}" height="${dotSize}" fill="${color}"/>`;
             }
         });
